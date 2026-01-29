@@ -1,41 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Smart Startup</title>
+<meta charset="UTF-8">
+<title>Pro Max Business Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5}
-.hero{padding:120px;text-align:center;background:#2563eb;color:white}
-.btn{background:white;color:#2563eb;padding:12px 30px;border-radius:8px;text-decoration:none}
-.box{background:white;margin:20px;padding:30px;border-radius:10px}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Arial, sans-serif;
+  background:linear-gradient(120deg,#000428,#004e92);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+}
+.hero-box{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
+  padding:50px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(0,0,0,0.6);
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
+}
+.hero h1{
+  font-size:3em;
+}
+.hero p{
+  margin:15px 0;
+  font-size:18px;
+  opacity:0.9;
+}
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 30px;
+  background:#00ffcc;
+  color:black;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* SECTIONS */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+.section h2{
+  font-size:2.2em;
+  margin-bottom:30px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+.card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
+  transition:0.3s;
+}
+.card:hover{
+  transform:scale(1.05);
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  max-width:1000px;
+  margin:auto;
+}
+.gallery div{
+  height:150px;
+  background:linear-gradient(45deg,#00ffcc,#0066ff);
+  border-radius:15px;
+  opacity:0.8;
+}
+
+/* CTA */
+.cta{
+  background:linear-gradient(120deg,#00ffcc,#0066ff);
+  color:black;
+  padding:60px 20px;
+  text-align:center;
+}
+.cta h2{
+  margin-bottom:15px;
+}
+
+/* WhatsApp */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:white;
+  padding:15px 25px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:18px;
+  box-shadow:0 0 20px rgba(0,0,0,0.6);
+}
 </style>
 </head>
+
 <body>
 
-<div class="hero">
-<h1 id="type"></h1>
-<p>We help small businesses grow</p>
-<a class="btn" href="#contact">Get Demo</a>
-</div>
+<section class="hero">
+  <div class="hero-box">
+    <h1>Your Business Name</h1>
+    <p>Professional Website That Brings Customers</p>
+    <p>This is demo – yahan aapka naam, photo aur number lagega</p>
+    <a href="#contact" class="btn">Get My Website</a>
+  </div>
+</section>
 
-<div class="box">Fast Website</div>
-<div class="box">Mobile Friendly</div>
-<div class="box">Direct Leads</div>
+<section class="section">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">Business Website</div>
+    <div class="card">Portfolio Website</div>
+    <div class="card">Shop / Gym Website</div>
+  </div>
+</section>
 
-<div id="contact" class="hero">
-<h2>Contact</h2>
-<a class="btn" href="https://wa.me/919999999999">WhatsApp</a>
-</div>
+<section class="section">
+  <h2>Why This Website Works</h2>
+  <div class="cards">
+    <div class="card">Mobile Friendly</div>
+    <div class="card">Fast Loading</div>
+    <div class="card">Direct WhatsApp Contact</div>
+  </div>
+</section>
 
-<script>
-const text="Your Digital Partner";
-let i=0;
-setInterval(()=>{
- if(i<text.length){
-  document.getElementById("type").innerHTML+=text[i];
-  i++;
- }
-},100);
-</script>
+<section class="section">
+  <h2>Your Products / Photos</h2>
+  <div class="gallery">
+    <div></div><div></div><div></div><div></div>
+  </div>
+  <p style="margin-top:15px;opacity:0.8;">
+    Yahan aapke real product ya shop ke photos lagenge
+  </p>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Ready To Grow Your Business?</h2>
+  <p>Get your own professional website today</p>
+  <a href="https://wa.me/919559401761" class="btn">Chat on WhatsApp</a>
+</section>
+
+<a class="whatsapp" href="https://wa.me/919559401761">WhatsApp</a>
+
 </body>
 </html>
