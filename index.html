@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 💪 गोल्ड जिम · कलेक्शन मास्टर </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 30% 10%, #1e2b4a, #0a0f1e);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Mirror Glass Effect */
+        .mirror-card {
+            background: rgba(18, 30, 50, 0.4);
+            backdrop-filter: blur(15px) saturate(180%);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 30px 25px;
+            box-shadow: 0 30px 50px -20px black;
+        }
+
+        /* Header */
+        .gym-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .gym-name {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(145deg, #ffffff, #a0f0ff, #70c8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gym-owner {
+            font-size: 28px;
+            color: #ffd966;
+            margin-top: 8px;
+        }
+
+        /* WhatsApp Block */
+        .whatsapp-mirror {
+            background: rgba(37, 211, 102, 0.25);
+            backdrop-filter: blur(10px);
+            border: 2px solid #25D366;
+            border-radius: 100px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .whatsapp-mirror a {
+            color: white;
+            text-decoration: none;
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .whatsapp-mirror span {
+            background: #25D366;
+            padding: 8px 30px;
+            border-radius: 60px;
+        }
+
+        /* Month Tabs */
+        .month-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin: 30px 0 20px;
+        }
+
+        .month-btn {
+            background: rgba(30, 50, 80, 0.6);
+            backdrop-filter: blur(5px);
+            border: 1px solid cyan;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #b5d0ff;
+        }
+
+        .month-btn.active {
+            background: cyan;
+            color: black;
+            box-shadow: 0 0 25px cyan;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: rgba(20, 40, 65, 0.5);
+            backdrop-filter: blur(10px);
+            border-left: 6px solid cyan;
+            border-radius: 40px;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 46px;
+            font-weight: 800;
+            color: cyan;
+        }
+
+        /* Members Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .member-card {
+            background: rgba(20, 35, 60, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #4f8cff;
+            border-radius: 40px;
+            padding: 25px;
+        }
+
+        .member-name {
+            font-size: 30px;
+            font-weight: 700;
+            color: #aaffff;
+            margin-bottom: 12px;
+        }
+
+        .member-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            padding: 10px 0;
+            border-bottom: 1px dashed #3f70b0;
+        }
+
+        .badge-paid { color: #a0ffb0; font-weight: 700; }
+        .badge-due { color: #ffaa66; font-weight: 700; }
+
+        .member-date {
+            background: rgba(0, 150, 255, 0.2);
+            backdrop-filter: blur(5px);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 40px;
+            margin-top: 15px;
+            color: #b0e0ff;
+        }
+
+        .member-phone {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #25D366;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            border: 3px solid gold;
+            border-radius: 60px;
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .admin-title {
+            color: gold;
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+
+        .admin-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .admin-input {
+            background: rgba(10, 25, 45, 0.8);
+            border: 2px solid cyan;
+            border-radius: 50px;
+            padding: 16px 20px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .admin-btn {
+            background: gold;
+            color: black;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 25px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background: #bc3f3f;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px;
+            width: 100%;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .password-box {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid gold;
+            border-radius: 60px;
+            padding: 30px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .password-input {
+            background: #0b1a32;
+            border: 2px solid cyan;
+            border-radius: 60px;
+            padding: 16px 25px;
+            color: white;
+            font-size: 20px;
+            width: 100%;
+            max-width: 350px;
+            margin: 15px auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: #7f9fd0;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="gym-header mirror-card">
+        <div class="gym-name" id="gymNameDisplay">💪 गोल्ड जिम</div>
+        <div class="gym-owner" id="ownerNameDisplay">राजेश कुमार (मालिक)</div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-mirror">
+        <a href="https://wa.me/919559401761" target="_blank">
+            💬 <span>व्हाट्सएप</span> - 9559401761
+        </a>
+    </div>
+
+    <!-- Password Box -->
+    <div class="password-box" id="passwordBox">
+        <h2 style="color: gold;">🔐 एडमिन पैनल के लिए पासवर्ड डालें</h2>
+        <input type="password" class="password-input" id="passwordInput" placeholder="पासवर्ड">
+        <button class="admin-btn" onclick="checkPassword()">✅ खोलें</button>
+    </div>
+
+    <!-- Admin Panel (Hidden) -->
+    <div class="admin-panel" id="adminPanel" style="display: none;">
+        <div class="admin-title">⚙️ एडमिन पैनल</div>
+
+        <h3 style="color:cyan;">🏢 जिम की जानकारी</h3>
+        <div class="admin-form">
+            <input class="admin-input" id="gymNameInput" placeholder="जिम का नाम">
+            <input class="admin-input" id="ownerNameInput" placeholder="मालिक का नाम">
+            <button class="admin-btn" onclick="updateGymInfo()">✅ अपडेट</button>
+        </div>
+
+        <h3 style="color:cyan; margin-top: 30px;">➕ नया सदस्य (फोन नंबर के साथ)</h3>
+        <div class="admin-form">
+            <input class="admin-input" id="memberName" placeholder="नाम">
+            <input class="admin-input" type="number" id="memberPhone" placeholder="फोन नंबर">
+            <input class="admin-input" type="number" id="memberAmount" placeholder="राशी">
+            <input class="admin-input" type="date" id="memberDate">
+            <select class="admin-input" id="memberStatus">
+                <option value="पेड">✅ पेड</option>
+                <option value="बकाया">⏳ बकाया</option>
+            </select>
+            <button class="admin-btn" onclick="addMember()">➕ जोड़ें</button>
+        </div>
+    </div>
+
+    <!-- Month Tabs -->
+    <div class="month-tabs" id="monthTabs"></div>
+
+    <!-- Stats -->
+    <div class="stats-grid" id="monthStats"></div>
+
+    <!-- Members List -->
+    <h2 style="margin: 30px 0 20px;">📋 सदस्य सूची</h2>
+    <div class="members-grid" id="membersList"></div>
+
+    <div class="footer">✨ हर सदस्य का अपना हिसाब · 3D GYM PRO</div>
+</div>
+
+<script>
+    // Data Structure
+    let gymData = {
+        gymName: "गोल्ड जिम",
+        ownerName: "राजेश कुमार",
+        waNumber: "919559401761",
+        members: {
+            "सचिन": {
+                phone: "9876543210",
+                history: [
+                    { month: "जनवरी 2026", amount: 2000, status: "पेड", date: "2026-01-15" }
+                ]
+            },
+            "अमित": {
+                phone: "9876543211",
+                history: [
+                    { month: "जनवरी 2026", amount: 2500, status: "बकाया", date: "2026-01-10" }
+                ]
+            },
+            "विकास": {
+                phone: "9876543212",
+                history: [
+                    { month: "फरवरी 2026", amount: 3000, status: "पेड", date: "2026-02-05" }
+                ]
+            }
+        }
+    };
+
+    let currentMonth = "जनवरी 2026";
+    let monthsList = ["जनवरी 2026", "फरवरी 2026", "मार्च 2026"];
+    let isAdmin = false;
+
+    // Load & Save
+    function loadData() {
+        let saved = localStorage.getItem('gymProMemberData');
+        if (saved) gymData = JSON.parse(saved);
+    }
+    loadData();
+    function saveData() { localStorage.setItem('gymProMemberData', JSON.stringify(gymData)); }
+
+    // Password Check
+    window.checkPassword = function() {
+        let pwd = document.getElementById('passwordInput').value;
+        if (pwd === 'gym@123') {
+            document.getElementById('passwordBox').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            isAdmin = true;
+            renderAll();
+        } else alert('❌ गलत पासवर्ड');
+    };
+
+    // Render All
+    function renderAll() {
+        document.getElementById('gymNameDisplay').innerText = '💪 ' + gymData.gymName;
+        document.getElementById('ownerNameDisplay').innerText = gymData.ownerName + ' (मालिक)';
+
+        // Month Tabs
+        let tabsHtml = '';
+        monthsList.forEach(m => {
+            tabsHtml += `<div class="month-btn ${m === currentMonth ? 'active' : ''}" onclick="switchMonth('${m}')">${m}</div>`;
+        });
+        if (isAdmin) {
+            tabsHtml += `<div class="month-btn" onclick="addNewMonth()">➕ नया महीना</div>`;
+        }
+        document.getElementById('monthTabs').innerHTML = tabsHtml;
+
+        // Calculate Stats for current month
+        let totalMembers = 0, totalPaid = 0, totalDue = 0;
+        let currentMonthMembers = [];
+
+        for (let name in gymData.members) {
+            let member = gymData.members[name];
+            let found = member.history.find(h => h.month === currentMonth);
+            if (found) {
+                totalMembers++;
+                if (found.status === 'पेड') totalPaid += found.amount;
+                else totalDue += found.amount;
+                currentMonthMembers.push({
+                    name: name,
+                    phone: member.phone,
+                    ...found
+                });
+            }
+        }
+
+        document.getElementById('monthStats').innerHTML = `
+            <div class="stat-card"><div class="stat-number">${totalMembers}</div><div>सदस्य</div></div>
+            <div class="stat-card"><div class="stat-number">₹${totalPaid}</div><div>जमा</div></div>
+            <div class="stat-card"><div class="stat-number">₹${totalDue}</div><div>बकाया</div></div>
+        `;
+
+        // Members List
+        let membersHtml = '';
+        currentMonthMembers.forEach(m => {
+            let dateStr = m.date.split('-').reverse().join('-');
+            membersHtml += `
+            <div class="member-card">
+                <div class="member-name">${m.name}</div>
+                <div class="member-row"><span>💰 राशी</span> <strong>₹${m.amount}</strong></div>
+                <div class="member-row"><span>📌 स्थिति</span> 
+                    <strong class="${m.status === 'पेड' ? 'badge-paid' : 'badge-due'}">${m.status}</strong>
+                </div>
+                <div class="member-date">📅 ${dateStr}</div>
+                <div class="member-phone">📞 ${m.phone}</div>
+                ${isAdmin ? `
+                    <button class="delete-btn" onclick="deleteMember('${m.name}')">🗑️ सदस्य हटाएँ</button>
+                ` : ''}
+            </div>`;
+        });
+        document.getElementById('membersList').innerHTML = membersHtml || '<p style="text-align:center;">इस महीने कोई सदस्य नहीं</p>';
+    }
+
+    // Functions
+    window.switchMonth = function(m) { currentMonth = m; renderAll(); };
+
+    window.addNewMonth = function() {
+        let m = prompt("नया महीना (जैसे: अप्रैल 2026)");
+        if (m && !monthsList.includes(m)) {
+            monthsList.push(m);
+            renderAll();
+        }
+    };
+
+    window.updateGymInfo = function() {
+        if (!isAdmin) return;
+        gymData.gymName = document.getElementById('gymNameInput').value || gymData.gymName;
+        gymData.ownerName = document.getElementById('ownerNameInput').value || gymData.ownerName;
+        saveData();
+        renderAll();
+        alert('✅ अपडेट हो गया');
+    };
+
+    window.addMember = function() {
+        if (!isAdmin) return;
+        let name = document.getElementById('memberName').value;
+        let phone = document.getElementById('memberPhone').value;
+        let amount = parseFloat(document.getElementById('memberAmount').value);
+        let date = document.getElementById('memberDate').value;
+        let status = document.getElementById('memberStatus').value;
+
+        if (!name || !phone || !amount || !date) {
+            alert('❌ नाम, फोन, राशी और तारीख सब भरो');
+            return;
+        }
+
+        // Agar member pehle se hai to sirf history mein add karo
+        if (gymData.members[name]) {
+            gymData.members[name].history.push({
+                month: currentMonth,
+                amount: amount,
+                status: status,
+                date: date
+            });
+        } else {
+            // Naya member banao
+            gymData.members[name] = {
+                phone: phone,
+                history: [{
+                    month: currentMonth,
+                    amount: amount,
+                    status: status,
+                    date: date
+                }]
+            };
+        }
+
+        saveData();
+        renderAll();
+
+        document.getElementById('memberName').value = '';
+        document.getElementById('memberPhone').value = '';
+        document.getElementById('memberAmount').value = '';
+    };
+
+    window.deleteMember = function(name) {
+        if (!isAdmin) return;
+        if (confirm('क्या सच में इस सदस्य का सारा डेटा हटा दें?')) {
+            delete gymData.members[name];
+            saveData();
+            renderAll();
+        }
+    };
+
+    renderAll();
+</script>
+</body>
+  </html>
